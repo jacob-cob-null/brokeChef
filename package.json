@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
     "vite": "^7.0.4"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
-    "preline": "^3.1.0",
-    "tailwindcss": "^4.1.11"
+    "@tailwindcss/vite": "^4.1.13",
+    "motion": "^12.23.12",
+    "preline": "^3.2.3"
   }
 }
