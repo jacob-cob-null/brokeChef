@@ -5,4 +5,4 @@ import { dashboardPage } from './dashboard/dashboardUI'
 import 'preline'
 
 const app = document.getElementById('app')
-app.append(dashboardPage())
+app.append(loginPage())
