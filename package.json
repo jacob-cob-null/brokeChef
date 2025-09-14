@@ -17,6 +17,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "firebase": "^12.2.1",
+    "material-icons": "^1.13.14",
     "motion": "^12.23.12",
     "preline": "^3.2.3"
   }

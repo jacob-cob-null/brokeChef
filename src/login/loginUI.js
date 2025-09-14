@@ -2,12 +2,14 @@ import { bgImage } from "./components/bg_image.js"
 import { message } from "./components/message.js"
 import { header } from "./components/header.js"
 import { button } from "./components/buttons.js"
+import pageView from "../views/pageView.js"
+import { dashboardPage } from "../dashboard/dashboardUI.js"
 
 export function loginPage() {
     const page = document.createElement('div')
 
     page.className = 'bg-slate-50 w-full h-full relative flex items-center flex-col'
-    page.append(bgImage('./public/bg_image.webp'))
+    page.append(bgImage('https://i.ibb.co/wX9680M/bg-image.webp'))
     page.append(header())
     page.append(message())
 
@@ -17,7 +19,27 @@ export function loginPage() {
     btnSection.append(button('Continue with Google', 'google'))
     btnSection.append(button('Continue with Google', 'anonymous'))
 
+    loginEvent(btnSection)
+
     page.append(btnSection)
 
+
     return page
+}
+
+function loginEvent(section) {
+    section.addEventListener('click', (e) => {
+        if (e.target.classList.contains('google')) {
+            alert('Logging in through google auth!')
+
+            //handle google login
+            pageView(dashboardPage)
+        }
+        if (e.target.classList.contains('anonymous')) {
+            alert('Logging in as a guest')
+
+            //handle guest
+            pageView(dashboardPage)
+        }
+    })
 }

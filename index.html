@@ -3,10 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/globalStyle.css" rel="stylesheet" />
     <title>BrokeChef</title>
   </head>
   <body>
-    <div id="app" class="w-full h-screen"></div>
+    <div id="app" class="w-full h-screen">
+      <!--main page-->
+      <div
+        class="h-full w-full bg-white grid grid-rows-[80px_minmax(900px,_1fr)_100px]"
+      >
+        <!--navbar-->
+        <div class="bg-slate-100 grid grid-cols-3 items-center px-8">
+          <span
+            class="material-icons"
+            style="font-size: 35px"
+            data-hs-overlay="#hs-sidebar-offcanvas"
+            >menu</span
+          >
+          <h1 class="text-center text-2xl">Recipes</h1>
+          <span class="material-icons justify-self-end" style="font-size: 35px"
+            >account_circle</span
+          >
+        </div>
+        <div id="body" class="w-full h-full">
+           <!-- Sidebar -->
+          <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="p-4">
+              <div class="flex justify-between items-center mb-8">
+                <h2 class="text-xl font-semibold">Menu</h2>
+                <button id="closeSidebar" class="material-icons">close</button>
+              </div>
+              <nav>
+                <ul class="space-y-4">
+                  <li>
+                    <a href="#" class="flex items-center gap-3 text-gray-700 hover:text-gray-900">
+                      <span class="material-icons">dashboard</span>
+                      Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center gap-3 text-gray-700 hover:text-gray-900">
+                      <span class="material-icons">menu_book</span>
+                      Recipes
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center gap-3 text-gray-700 hover:text-gray-900">
+                      <span class="material-icons">account_circle</span>
+                      Account
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+              <!-- End Body -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
+        <script>
+      // Add this before closing body tag
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.querySelector('[data-hs-overlay="#hs-sidebar-offcanvas"]');
+        const sidebar = document.getElementById('sidebar');
+        const closeButton = document.getElementById('closeSidebar');
+
+        menuButton.addEventListener('click', () => {
+          sidebar.classList.remove('-translate-x-full');
+        });
+
+        closeButton.addEventListener('click', () => {
+          sidebar.classList.add('-translate-x-full');
+        });
+      });
+    </script>
   </body>
 </html>
