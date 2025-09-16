@@ -3,7 +3,9 @@ import { message } from "./components/message.js"
 import { header } from "./components/header.js"
 import { button } from "./components/buttons.js"
 import pageView from "../views/pageView.js"
-import { dashboardPage } from "../dashboard/dashboardUI.js"
+
+import renderHome from "../views/homeView.js"
+
 
 export function loginPage() {
     const page = document.createElement('div')
@@ -33,13 +35,15 @@ function loginEvent(section) {
             alert('Logging in through google auth!')
 
             //handle google login
-            pageView(dashboardPage)
+            pageView(renderHome)
+
         }
         if (e.target.classList.contains('anonymous')) {
             alert('Logging in as a guest')
 
             //handle guest
-            pageView(dashboardPage)
+            pageView(renderHome)
+
         }
     })
 }

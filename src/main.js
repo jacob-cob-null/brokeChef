@@ -7,5 +7,5 @@ import 'preline'
 import renderHome from './views/homeView';
 
 const app = document.getElementById('app')
-// app.append(loginPage())
-app.append(renderHome())
+app.append(loginPage())
+
