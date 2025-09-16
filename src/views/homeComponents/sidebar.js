@@ -1,3 +1,5 @@
+import renderHome from "../homeView";
+
 export default function sidebar() {
     const sidebar = document.createElement("div");
     sidebar.id = "sidebar";
@@ -12,25 +14,25 @@ export default function sidebar() {
         <nav>
           <ul>
             <li>
-              <a href="#" class="flex items-center px-4 py-2 gap-3 text-2xl text-gray-700 hover:text-gray-900">
+              <a href="#" class="recipes flex items-center px-4 py-2 gap-3 text-2xl text-gray-700 hover:text-gray-900  hover:bg-slate-100 active:bg-slate-200">
                 <span class="material-icons mt-1.5">library_books</span>
                 <h1>Recipes</h1>
               </a>
             </li>
             <li>
-              <a href="#" class="flex items-center px-4 py-2 gap-3 text-2xl w-full text-gray-700 hover:text-gray-900">
+              <a href="#" class="favorites flex items-center px-4 py-2 gap-3 text-2xl w-full text-gray-700 hover:text-gray-900  hover:bg-slate-100 active:bg-slate-200">
                 <span class="material-icons mt-1.5">bookmark</span>
                 Favorites
               </a>
             </li>
             <li>
-              <a href="#" class="flex items-center px-4 py-2 gap-2 text-2xl text-gray-700 hover:text-gray-900">
+              <a href="#" class="search flex items-center px-4 py-2 gap-2 text-2xl text-gray-700 hover:text-gray-900  hover:bg-slate-100 active:bg-slate-200">
                 <span class="material-icons mt-1.5">search</span>
                 Search
               </a>
             </li>
             <li>
-              <a href="#" class="flex items-center px-4 py-2 gap-3 text-2xl text-gray-700 hover:text-gray-900 hover:bg-slate-100 active:bg-slate-200">
+              <a href="#" class="about flex items-center px-4 py-2 gap-3 text-2xl text-gray-700 hover:text-gray-900 hover:bg-slate-100 active:bg-slate-200">
                 <span class="material-icons mt-1">question_mark</span>
                 About
               </a>
@@ -40,7 +42,6 @@ export default function sidebar() {
       </div>
     `;
 
-    // Use event delegation for better performance and reliability
     document.addEventListener('click', (e) => {
         // Open sidebar when menu button is clicked
         if (e.target.matches('[data-hs-overlay="#hs-sidebar-offcanvas"]')) {
@@ -52,6 +53,22 @@ export default function sidebar() {
             sidebar.classList.add("-translate-x-full");
         }
     });
+
+    //menu items selection
+    sidebar.addEventListener('click', (e) => {
+        if (e.target.classList.contains('recipes')) {
+            alert('recipe')
+        }
+        if (e.target.classList.contains('favorites')) {
+            alert('favorites')
+        }
+        if (e.target.classList.contains('search')) {
+            alert('search')
+        }
+        if (e.target.classList.contains('about')) {
+            alert('about')
+        }
+    })
 
     return sidebar;
 }

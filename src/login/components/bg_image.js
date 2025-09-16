@@ -1,6 +1,6 @@
-export function bgImage(imageURL) {
+export function bgImage() {
     const image = document.createElement('div')
-    image.classList = `bg-[url('${imageURL}')] brightness-90 bg-no-repeat bg-cover h-[60%] w-full rounded-b-[80px]`
+    image.classList = `bg-slate-200 brightness-90  h-[60%] w-full rounded-b-[90px] sm:rounded-b-full`
 
     return image
 }

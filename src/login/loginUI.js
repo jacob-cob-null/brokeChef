@@ -11,7 +11,7 @@ export function loginPage() {
     const page = document.createElement('div')
 
     page.className = 'bg-slate-50 w-full h-full relative flex items-center flex-col'
-    page.append(bgImage('https://i.ibb.co/wX9680M/bg-image.webp'))
+    page.append(bgImage())
     page.append(header())
     page.append(message())
 
@@ -19,7 +19,7 @@ export function loginPage() {
     btnSection.className = 'mt-12 grid grid-rows-2 h-[120px] w-[250px] gap-4'
 
     btnSection.append(button('Continue with Google', 'google'))
-    btnSection.append(button('Continue with Google', 'anonymous'))
+    btnSection.append(button('Continue as a Guest', 'anonymous'))
 
     loginEvent(btnSection)
 
