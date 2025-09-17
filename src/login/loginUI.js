@@ -2,8 +2,7 @@ import { bgImage } from "./components/bg_image.js"
 import { message } from "./components/message.js"
 import { header } from "./components/header.js"
 import { button } from "./components/buttons.js"
-import pageView from "../views/pageView.js"
-
+import { pageView } from "../views/pageView.js"
 import renderHome from "../views/homeView.js"
 
 
