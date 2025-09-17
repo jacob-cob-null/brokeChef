@@ -10,7 +10,7 @@
     <div id="app" class="w-full h-screen">
       <!--Start-->
       <div
-        class="grid grid-rows-[50px_1fr_250px] gap-4 w-full h-full bg-gray-200 p-6"
+        class="grid grid-rows-[50px_1fr_80px_80px] gap-4 w-full h-full bg-gray-200 p-6"
       >
         <h1 class="text-2xl mb-">Let me cook somethin'</h1>
         <!--ingredient list-->
@@ -26,7 +26,7 @@
         </div>
         <!--input-->
         <div
-          class="flex justify-center items-start p-3 gap-4 rounded-4xl h-fit bg-white"
+          class="flex justify-center items-start p-3 gap-2 rounded-4xl h-fit bg-white"
         >
           <form class="flex justify-center w-full items-start h-full">
             <input
@@ -36,10 +36,26 @@
             />
           </form>
           <div
-            class="w-[75px] h-[60px] rounded-full flex justify-center items-center text-4xl bg-green-100"
+            class="w-[75px] h-[60px] rounded-full flex justify-center items-center text-4xl bg-green-100 hover:brightness-95 active:bg-green-200 transition-all duration-150"
           >
             <span class="material-icons">add</span>
           </div>
+          <!--API buttons-->
+        </div>
+        <div class="flex gap-2 w-full h-full">
+          <button
+            class="w-full h-[60px] rounded-3xl bg-linear-to-r from-green-500 via-emerald-500 to-teal-500 flex justify-center items-center gap-3 text-xl text-white"
+          >
+            <span class="material-icons mt-1 text-white">auto_awesome</span>
+            Generate
+          </button>
+
+          <button
+            class="w-full h-[60px] rounded-3xl bg-white flex justify-center items-center gap-3 text-xl"
+          >
+            <span class="material-icons mt-1">search</span>
+            Search
+          </button>
         </div>
       </div>
       <!--End-->
