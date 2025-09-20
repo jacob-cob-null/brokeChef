@@ -1,4 +1,5 @@
 import renderHome from "../homeView";
+import generateMenuView from "../generateMenu/generateMenuView";
 
 export default function sidebar() {
   const sidebar = document.createElement("div");
@@ -13,10 +14,10 @@ export default function sidebar() {
         </div>
         <nav>
           <ul>
-            <li>
-              <a href="#" class="recipes flex items-center px-4 py-2 gap-3 text-2xl text-gray-700 hover:text-gray-900  hover:bg-slate-100 active:bg-slate-200">
-                <span class="material-icons mt-1.5">library_books</span>
-                <h1>Generate</h1>
+            <li class="generate">
+              <a href="#" class="generate flex items-center px-4 py-2 gap-3 text-2xl text-gray-700 hover:text-gray-900  hover:bg-slate-100 active:bg-slate-200">
+                <span class="generate material-icons mt-1.5">auto_awesome</span>
+                <h1 class="generate">Generate</h1>
               </a>
             </li>
             <li>
@@ -62,8 +63,16 @@ export default function sidebar() {
 
   //menu items selection
   sidebar.addEventListener('click', (e) => {
+
+    const body = document.getElementById('body')
+
     if (e.target.classList.contains('recipes')) {
       alert('recipe')
+    }
+    if (e.target.classList.contains('generate')) {
+
+      body.append(generateMenuView())
+
     }
     if (e.target.classList.contains('favorites')) {
       alert('favorites')
