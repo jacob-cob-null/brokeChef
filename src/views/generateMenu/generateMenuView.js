@@ -2,6 +2,7 @@ import { ingredientList } from "./components/ingredientList"
 import { ingredientInput } from "./components/ingredientInput"
 import { apiButtons } from "./components/apiButtons"
 import { ingredientItem } from "./components/ingredientItem"
+import { warning } from "../../utility/alerts"
 
 export default function generateMenuView() {
     const page = document.createElement('div')
@@ -28,7 +29,7 @@ function events(root) {
         const value = ingredientField.value.trim()
 
         if (!value) {
-            alert("input field empty")
+            warning("Oops! You left the field blank")
         } else {
             //save input value and append to list
             ingredientItem(value, list)
