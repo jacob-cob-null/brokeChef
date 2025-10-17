@@ -9,7 +9,7 @@ import 'preline'
 const app = document.getElementById('app')
 
 // entry point
-// app.append(loginPage())
+app.append(loginPage())
 // menu testing
-app.append(renderHome())
+// app.append(renderHome())
 
