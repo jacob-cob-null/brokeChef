@@ -28,6 +28,7 @@ function events(root) {
         const ingredientField = root.querySelector("#ingredient")
         const value = ingredientField.value.trim()
 
+        //validate word through api and block duplicates
         if (!value) {
             warning("Oops! You left the field blank")
         } else {

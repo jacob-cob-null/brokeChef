@@ -1,23 +1,2 @@
 @import "tailwindcss";
 @import "material-icons/iconfont/material-icons.css";
-
-/* success toast */
-.toast-success {
-  background: #16a34a; /* green */
-  color: #fff;
-  font-weight: bold;
-}
-
-/* error toast */
-.toast-error {
-  background: #dc2626; /* red */
-  color: #fff;
-  font-weight: bold;
-}
-
-/* warning toast */
-.toast-warning {
-  background: #f59e0b; /* amber */
-  color: #000;
-  font-weight: bold;
-}

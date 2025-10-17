@@ -1,5 +1,6 @@
 import renderHome from "../homeView";
 import generateMenuView from "../generateMenu/generateMenuView";
+import recipesView from "../recipes/recipesMenuView";
 
 export default function sidebar() {
   const sidebar = document.createElement("div");
@@ -67,12 +68,10 @@ export default function sidebar() {
     const body = document.getElementById('body')
 
     if (e.target.classList.contains('recipes')) {
-      alert('recipe')
+      body.append(recipesView())
     }
     if (e.target.classList.contains('generate')) {
-
       body.append(generateMenuView())
-
     }
     if (e.target.classList.contains('favorites')) {
       alert('favorites')
