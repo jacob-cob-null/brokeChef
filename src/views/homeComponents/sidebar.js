@@ -1,7 +1,8 @@
 import renderHome from "../homeView";
 import generateMenuView from "../generateMenu/generateMenuView";
 import recipesView from "../recipes/recipesMenuView";
-
+import favoritesView from "../favorites/favoritesMenuView";
+import aboutView from "../about/aboutMenuView";
 export default function sidebar() {
   const sidebar = document.createElement("div");
   sidebar.id = "sidebar";
@@ -68,19 +69,24 @@ export default function sidebar() {
     const body = document.getElementById('body')
 
     if (e.target.classList.contains('recipes')) {
+      body.innerHTML = ''
       body.append(recipesView())
     }
     if (e.target.classList.contains('generate')) {
+      body.innerHTML = ''
       body.append(generateMenuView())
     }
     if (e.target.classList.contains('favorites')) {
-      alert('favorites')
+      body.innerHTML = ''
+      body.append(favoritesView())
     }
     if (e.target.classList.contains('search')) {
+      body.innerHTML = ''
       alert('search')
     }
     if (e.target.classList.contains('about')) {
-      alert('about')
+      body.innerHTML = ''
+      body.append(aboutView())
     }
   })
 
