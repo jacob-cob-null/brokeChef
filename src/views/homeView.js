@@ -1,7 +1,7 @@
 import navbar from "./homeComponents/navbar"
 import sidebar from "./homeComponents/sidebar"
 
-export default function renderHome(menuTitle = 'Recipes') {
+export default function renderHome(menuTitle = 'BrokeChef') {
     const mainPage = document.createElement('div')
     mainPage.className = 'h-full w-full bg-white grid grid-rows-[80px_minmax(900px,_1fr)_100px] overflow-x-hidden'
 
