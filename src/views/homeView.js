@@ -11,7 +11,7 @@ export default function renderHome(menuTitle = 'BrokeChef') {
     //body
     const body = document.createElement('div')
     body.id = 'body'
-    body.className = 'w-full h-full'
+    body.className = 'w-full h-full p-2'
 
     mainPage.append(body)
 

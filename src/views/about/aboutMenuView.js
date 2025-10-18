@@ -7,7 +7,7 @@ export default function aboutView() {
     🍳 About BrokeChef
 </h1>
 
-<p class="text-slate-700 text-xl leading-relaxed max-w-3xl mx-auto">
+<p class="text-slate-700 text-xl leading-relaxed max-w-3xl mx-auto font-body text-center">
     BrokeChef is your ultimate kitchen sidekick for those <span class="font-semibold text-orange-600">“what do I cook?”</span> nights.<br><br>
 
     Just enter what ingredients you have, and in seconds it creates a <span class="italic font-semibold text-orange-600">delicious, drool-worthy recipe</span>.<br><br>

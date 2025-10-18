@@ -1,7 +1,7 @@
 export default function recipeItemComponent() {
-    const component = document.createElement('div')
-    component.className = 'grid h-[200px] w-full grid-cols-3 grid-rows-1 place-content-center gap-4 rounded-2xl bg-white p-4 drop-shadow-lg'
-    component.innerHTML = `
+  const component = document.createElement('div')
+  component.className = 'grid h-[200px] w-full grid-cols-3 grid-rows-1 place-content-center gap-4 rounded-2xl bg-white p-4 drop-shadow-lg  outline-1 outline-slate-100'
+  component.innerHTML = `
   <div class="relative w-full h-full rounded-xl overflow-hidden">
     <img
       src="https://placehold.co/600x600"
@@ -36,6 +36,5 @@ export default function recipeItemComponent() {
   </div>
 `;
 
-
-    return component
+  return component
 }
