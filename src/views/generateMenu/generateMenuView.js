@@ -6,8 +6,9 @@ import { warning } from "../../utility/alerts"
 
 export default function generateMenuView() {
     const page = document.createElement('div')
-    page.className = "grid grid-rows-[minmax(500px,600px)_80px_80px] gap-3 w-full h-full bg-gray-100 p-6 mb-4"
+    page.className = "grid grid-rows-[30px_minmax(500px,600px)_70px_70px] gap-3 w-full h-full bg-gray-100 px-3 py-6 mb-4"
 
+    page.innerHTML = '<h1 class="font-title text-center text-2xl">Generate some magic ig...</h1>'
 
     page.append(ingredientList())
     page.append(ingredientInput())

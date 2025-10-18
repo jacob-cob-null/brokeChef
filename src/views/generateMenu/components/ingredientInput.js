@@ -1,6 +1,6 @@
 export function ingredientInput() {
   const div = document.createElement('div')
-  div.className = "flex justify-center items-start p-3 gap-2 rounded-3xl h-fit bg-white shadow-xs"
+  div.className = "flex justify-center items-start p-3 gap-2 rounded-3xl h-fit bg-white drop-shadow-md"
   div.innerHTML = `<form class="flex justify-center w-full items-start h-full">
             <input
               type="text"

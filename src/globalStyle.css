@@ -1,2 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Galindo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 @import "tailwindcss";
 @import "material-icons/iconfont/material-icons.css";
+
+@theme {
+  --font-title: "Galindo", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+@layer utilities {
+  .title-font {
+    @apply text-2xl text-orange-500 font-title;
+  }
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.075);
+  }
+}

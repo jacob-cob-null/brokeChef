@@ -1,7 +1,7 @@
 export default function recipeItemComponent() {
-    const component = document.createElement('div')
-    component.className = 'grid h-[200px] w-full grid-cols-3 grid-rows-1 place-content-center gap-4 rounded-2xl bg-white p-4 drop-shadow-lg'
-    component.innerHTML = `
+  const component = document.createElement('div')
+  component.className = 'grid h-fit w-full grid-cols-3 grid-rows-1 place-content-center gap-4 rounded-2xl bg-white p-4 drop-shadow-lg  outline-1 outline-slate-100'
+  component.innerHTML = `
   <div class="relative w-full h-full rounded-xl overflow-hidden">
     <img
       src="https://placehold.co/600x600"
@@ -11,12 +11,12 @@ export default function recipeItemComponent() {
   </div>
 
   <div class="col-span-2 flex flex-col justify-start gap-2">
-    <div class="flex justify-between">
+    <div class="flex justify-between items-center">
       <h1 class="text-xl font-semibold text-slate-800">Recipe Title</h1>
-      <div class="h-6 w-6 bg-black"></div>
+      <h1 class="text-3xl text-slate-500 mb-2">★</h1>
     </div>
 
-    <p class="text-slate-600 text-base">
+    <p class="text-slate-600 text-base font-body">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, unde,
       fugit pariatur voluptatibus saepe fugiat optio
     </p>
@@ -36,6 +36,5 @@ export default function recipeItemComponent() {
   </div>
 `;
 
-
-    return component
+  return component
 }
