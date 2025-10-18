@@ -9,7 +9,7 @@ import renderHome from "../views/homeView.js"
 export function loginPage() {
     const page = document.createElement('div')
 
-    page.className = 'bg-slate-50 w-full h-full relative flex items-center flex-col'
+    page.className = 'bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] w-full h-full relative flex items-center flex-col'
     page.append(bgImage())
     page.append(header())
     page.append(message())
@@ -30,17 +30,21 @@ export function loginPage() {
 
 function loginEvent(section) {
     section.addEventListener('click', (e) => {
-        if (e.target.classList.contains('google')) {
-            alert('Logging in through google auth!')
+        const btn = e.target.closest('button')
+        if (!btn) return
 
-            //handle google login
+        if (btn.classList.contains('google')) {
+            // avoid blocking alert() which can cause perceived input lag
+            console.log('Logging in through google auth!')
+
+            // handle google login (placeholder)
             pageView(renderHome)
 
         }
-        if (e.target.classList.contains('anonymous')) {
-            alert('Logging in as a guest')
+        if (btn.classList.contains('anonymous')) {
+            console.log('Logging in as a guest')
 
-            //handle guest
+            // handle guest
             pageView(renderHome)
 
         }

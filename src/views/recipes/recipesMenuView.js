@@ -2,18 +2,19 @@ import recipeItemComponent from "../../recipeItemComponent/recipeItemComponent.j
 
 export default function recipesView() {
     const page = document.createElement('div')
-    page.className = 'flex h-full w-full flex flex-col gap-4 px-4 py-2'
+    page.className = 'flex h-full w-full flex flex-col gap-4 p-4'
 
 
     page.innerHTML = `
-    <span class="flex justify-between items-center m-2.5">
+    <span class="flex justify-between items-center">
         <h1 class="text-3xl text-slate-700 font-title">
             Recipes
         </h1>
-        <h2 class="font-body text-slate-600 font-semibold italic text-lg">
+        <h2 class="font-body text-slate-500 font-semibold italic text-lg">
             Like a darn museum!
         </h2>
     </span>
+        <hr class="outline-1 outline-slate-700 mb-2">
     `
 
     page.appendChild(recipeItemComponent())

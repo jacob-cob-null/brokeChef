@@ -3,7 +3,7 @@ export default function aboutView() {
     page.className = 'flex h-full w-full flex flex-col gap-4 px-4 py-2 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]'
 
     page.innerHTML = `
-<h1 class="text-6xl font-extrabold text-orange-600 mb-8 text-center">
+<h1 class="text-6xl font-extrabold text-orange-500 mb-8 text-center">
     About BrokeChef
 </h1>
 
