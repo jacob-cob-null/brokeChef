@@ -3,6 +3,8 @@ import generateMenuView from "../generateMenu/generateMenuView";
 import recipesView from "../recipes/recipesMenuView";
 import favoritesView from "../favorites/favoritesMenuView";
 import aboutView from "../about/aboutMenuView";
+import { searchMenuView } from "../search/searchMenuView";
+
 export default function sidebar() {
   const sidebar = document.createElement("div");
   sidebar.id = "sidebar";
@@ -82,7 +84,7 @@ export default function sidebar() {
     }
     if (e.target.classList.contains('search')) {
       body.innerHTML = ''
-      alert('search')
+      body.append(searchMenuView())
     }
     if (e.target.classList.contains('about')) {
       body.innerHTML = ''
