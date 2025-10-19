@@ -4,7 +4,8 @@ import { header } from "./components/header.js"
 import { button } from "./components/buttons.js"
 import { pageView } from "../views/pageView.js"
 import renderHome from "../views/homeView.js"
-
+import { googleAuth } from "../firebase/googleAuth.js"
+import { anonymousAuth } from "../firebase/anonymousAuth.js"
 
 export function loginPage() {
     const page = document.createElement('div')
@@ -29,24 +30,17 @@ export function loginPage() {
 }
 
 function loginEvent(section) {
-    section.addEventListener('click', (e) => {
+    section.addEventListener('click', async (e) => {
         const btn = e.target.closest('button')
         if (!btn) return
 
         if (btn.classList.contains('google')) {
-            // avoid blocking alert() which can cause perceived input lag
             console.log('Logging in through google auth!')
-
-            // handle google login (placeholder)
-            pageView(renderHome)
+            googleAuth()
 
         }
         if (btn.classList.contains('anonymous')) {
-            console.log('Logging in as a guest')
-
-            // handle guest
-            pageView(renderHome)
-
+            anonymousAuth()
         }
     })
 }
