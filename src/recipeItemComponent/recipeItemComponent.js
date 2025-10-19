@@ -1,6 +1,6 @@
 export default function recipeItemComponent() {
   const component = document.createElement('div')
-  component.className = 'grid h-fit w-full grid-cols-3 grid-rows-1 place-content-center gap-4 rounded-2xl bg-white p-4 drop-shadow-lg  outline-1 outline-slate-100'
+  component.className = 'grid h-fit h-max-[210px] w-full grid-cols-3 grid-rows-1 place-content-center gap-4 rounded-2xl bg-white p-4 drop-shadow-lg  outline-1 outline-slate-100'
   component.innerHTML = `
   <div class="relative w-full h-full rounded-xl overflow-hidden">
     <img

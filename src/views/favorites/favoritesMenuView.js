@@ -15,14 +15,19 @@ export default function favoritesView() {
         </h2>
     </span>
     <hr class="outline-1 outline-slate-700 mb-2">
+
     `
+    const recipeCont = document.createElement('div')
+    recipeCont.className = 'h-full w-full p-2 flex flex-col gap-2 overflow-x-hidden overflow-y-auto'
 
+    page.appendChild(recipeCont)
 
-    page.appendChild(recipeItemComponent())
-    page.appendChild(recipeItemComponent())
-    page.appendChild(recipeItemComponent())
-    page.appendChild(recipeItemComponent())
-    page.appendChild(recipeItemComponent())
+    recipeCont.appendChild(recipeItemComponent())
+    recipeCont.appendChild(recipeItemComponent())
+    recipeCont.appendChild(recipeItemComponent())
+    recipeCont.appendChild(recipeItemComponent())
+    recipeCont.appendChild(recipeItemComponent())
+    recipeCont.appendChild(recipeItemComponent())
 
     return page
 }

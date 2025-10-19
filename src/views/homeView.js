@@ -13,7 +13,7 @@ export default function renderHome(menuTitle = 'BrokeChef') {
 
     const body = document.createElement('div')
     body.id = 'body'
-    body.className = 'w-full h-full overflow-y-auto'
+    body.className = 'w-full h-full overflow-hidden'
     mainPage.append(body)
 
     mainPage.append(sidebar())
