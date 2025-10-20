@@ -1,5 +1,5 @@
 import recipeItemComponent from "../../recipeItemComponent/recipeItemComponent.js"
-
+import { renderRecipe } from "../../recipeItemComponent/renderRecipe.js"
 export default function favoritesView() {
     const page = document.createElement('div')
     page.className = 'flex h-full w-full flex flex-col gap-4 p-4'
@@ -21,8 +21,10 @@ export default function favoritesView() {
     recipeCont.className = 'h-full w-full p-2 flex flex-col gap-2 overflow-x-hidden overflow-y-auto'
 
     page.appendChild(recipeCont)
+    recipeCont.innerHTML = ""
 
     // recipeCont.appendChild(recipeItemComponent())
 
+    renderRecipe(recipeCont, "favorites")
     return page
 }
