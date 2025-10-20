@@ -1,12 +1,24 @@
 import { recipeModel } from "../models/recipeModel";
 import recipeItemComponent from "./recipeItemComponent";
 
-export function renderRecipe(target) {
-    const recipeHandler = recipeModel();
+const recipeHandler = recipeModel();
+
+export function renderRecipe(target, type = "regular") {
+
 
     const recipeList = recipeHandler.getLocal()
 
-    recipeList.forEach(ing => {
-        target.appendChild(recipeItemComponent(ing))
-    });
+    if (type == "regular") {
+        recipeList.forEach(ing => {
+            target.appendChild(recipeItemComponent(ing))
+        });
+    }
+    else {
+        recipeList.forEach(ing => {
+            if (ing["isFavorite"]) {
+                target.appendChild(recipeItemComponent(ing))
+            }
+        });
+    }
+
 }
