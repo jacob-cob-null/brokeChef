@@ -19,3 +19,11 @@ export function warning(msg) {
         title: msg
     })
 }
+
+export function confirmation(msg) {
+    Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: `${msg}`
+    });
+}

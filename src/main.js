@@ -10,6 +10,7 @@ const app = document.getElementById('app')
 
 // entry point
 app.append(loginPage())
+
 // menu testing
 // app.append(renderHome())
 
