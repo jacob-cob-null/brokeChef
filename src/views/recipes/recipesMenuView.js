@@ -21,12 +21,7 @@ export default function recipesView() {
 
     page.appendChild(recipeCont)
 
-    recipeCont.appendChild(recipeItemComponent())
-    recipeCont.appendChild(recipeItemComponent())
-    recipeCont.appendChild(recipeItemComponent())
-    recipeCont.appendChild(recipeItemComponent())
-    recipeCont.appendChild(recipeItemComponent())
-    recipeCont.appendChild(recipeItemComponent())
+    // recipeCont.appendChild(recipeItemComponent())
 
     return page
 }

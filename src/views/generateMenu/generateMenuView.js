@@ -3,9 +3,10 @@ import { ingredientInput } from "./components/ingredientInput"
 import { apiButtons } from "./components/apiButtons"
 import { ingredientItem } from "./components/ingredientItem"
 import { warning, confirmation } from "../../utility/alerts"
-import { ingredientModel } from "../../fetching/ingredientModel"
+import { ingredientModel } from "../../models/ingredientModel"
 import { fetchApi } from "../../fetching/fetchApi"
 import { fetchLLM } from "../../fetching/fetchLLM"
+import { recipeModel } from "../../models/recipeModel"
 
 export default function generateMenuView() {
     const page = document.createElement('div')
@@ -23,12 +24,14 @@ export default function generateMenuView() {
     return page
 }
 function events(root) {
-    //ingredient methods
+    //ingredient and recipe methods
     const ingredientHandler = ingredientModel()
+    const recipeHandler = recipeModel()
 
     //add btn
     const addBtn = root.querySelector("#addBtn")
     const list = root.querySelector("#ingredientList")
+
     //generate buttons
     const api = root.querySelector("#api")
     const llm = root.querySelector("#llm")
@@ -58,9 +61,10 @@ function events(root) {
         list.innerHTML = ''
         list.innerHTML =
             `
-        <h1 class="font-title text-3xl text-slate-700">Making some Magic✨</h1>
+        <h1 class="font-title text-3xl text-center text-slate-700">Making some Magic✨</h1>
         `
-        await fetchApi(ingredientHandler.getIngredients())
+        const recipe = await fetchApi(ingredientHandler.getIngredients())
+        recipeHandler.addRecipe(recipe)
         confirmation("You have fetched a new Recipe!")
         list.innerHTML = ''
     })
@@ -73,9 +77,10 @@ function events(root) {
         list.innerHTML = ''
         list.innerHTML =
             `
-        <h1 class="font-title text-2xl text-center self-center text-slate-700">Making some Magic✨</h1>
+        <h1 class="font-title text-2xl text-center text-slate-700">Making some Magic✨</h1>
         `
-        await fetchLLM(ingredientHandler.getIngredients())
+        const recipe = await fetchLLM(ingredientHandler.getIngredients())
+        recipeHandler.addRecipe(recipe)
         confirmation("You have generated a new Recipe!")
         list.innerHTML = ''
     })

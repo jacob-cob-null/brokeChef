@@ -9,5 +9,5 @@ export async function fetchApi(ingredients) {
 
     const recipe = await res.json()
 
-    alert(JSON.stringify(recipe))
+    return recipe
 }
