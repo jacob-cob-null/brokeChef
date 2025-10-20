@@ -1,4 +1,5 @@
 import recipeItemComponent from "../../recipeItemComponent/recipeItemComponent.js"
+import { renderRecipe } from "../../recipeItemComponent/renderRecipe.js"
 
 export default function recipesView() {
     const page = document.createElement('div')
@@ -20,8 +21,9 @@ export default function recipesView() {
     recipeCont.className = 'h-full w-full p-2 flex flex-col gap-2 overflow-x-hidden overflow-y-auto'
 
     page.appendChild(recipeCont)
-
+    recipeCont.innerHTML = ""
     // recipeCont.appendChild(recipeItemComponent())
+    renderRecipe(recipeCont)
 
     return page
 }
