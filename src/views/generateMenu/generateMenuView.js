@@ -2,7 +2,10 @@ import { ingredientList } from "./components/ingredientList"
 import { ingredientInput } from "./components/ingredientInput"
 import { apiButtons } from "./components/apiButtons"
 import { ingredientItem } from "./components/ingredientItem"
-import { warning } from "../../utility/alerts"
+import { warning, confirmation } from "../../utility/alerts"
+import { ingredientModel } from "../../fetching/ingredientModel"
+import { fetchApi } from "../../fetching/fetchApi"
+import { fetchLLM } from "../../fetching/fetchLLM"
 
 export default function generateMenuView() {
     const page = document.createElement('div')
@@ -20,11 +23,18 @@ export default function generateMenuView() {
     return page
 }
 function events(root) {
+    //ingredient methods
+    const ingredientHandler = ingredientModel()
+
     //add btn
     const addBtn = root.querySelector("#addBtn")
     const list = root.querySelector("#ingredientList")
+    //generate buttons
+    const api = root.querySelector("#api")
+    const llm = root.querySelector("#llm")
 
     addBtn.addEventListener('click', () => {
+
         // input field
         const ingredientField = root.querySelector("#ingredient")
         const value = ingredientField.value.trim()
@@ -34,8 +44,39 @@ function events(root) {
             warning("Oops! You left the field blank")
         } else {
             //save input value and append to list
+            ingredientHandler.addIngredient(value)
             ingredientItem(value, list)
             ingredientField.value = ""
         }
+    })
+
+    api.addEventListener('click', async () => {
+        if (ingredientHandler.getLength() < 3) {
+            warning("Add at least 3 ingredients")
+            return
+        }
+        list.innerHTML = ''
+        list.innerHTML =
+            `
+        <h1 class="font-title text-3xl text-slate-700">Making some Magic✨</h1>
+        `
+        await fetchApi(ingredientHandler.getIngredients())
+        confirmation("You have fetched a new Recipe!")
+        list.innerHTML = ''
+    })
+
+    llm.addEventListener('click', async () => {
+        if (ingredientHandler.getLength() < 3) {
+            warning("Add at least 3 ingredients")
+            return
+        }
+        list.innerHTML = ''
+        list.innerHTML =
+            `
+        <h1 class="font-title text-2xl text-center self-center text-slate-700">Making some Magic✨</h1>
+        `
+        await fetchLLM(ingredientHandler.getIngredients())
+        confirmation("You have generated a new Recipe!")
+        list.innerHTML = ''
     })
 }
