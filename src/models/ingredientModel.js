@@ -5,7 +5,7 @@ export function ingredientModel() {
         ingredients.push(value)
     }
     function deleteIngredient(value) {
-        ingredients = ingredients.filter(ing => ing == value)
+        ingredients = ingredients.filter(ing => ing != value)
     }
     function clearIngredient() {
         ingredients.length = 0
