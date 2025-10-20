@@ -1,8 +1,15 @@
 export function recipeModel() {
-    let recipes = []
+    // initialize from localStorage so multiple model instances share stored data
+    let recipes = JSON.parse(localStorage.getItem("recipes") || "[]")
 
     function addRecipe(obj) {
-        recipes.push(obj)
+        // ensure the recipe has a stable id and default fields before saving
+        const recipe = Object.assign({
+            id: (obj && obj.id) || (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString()),
+            isFavorite: obj && typeof obj.isFavorite !== 'undefined' ? obj.isFavorite : false
+        }, obj)
+
+        recipes.push(recipe)
         saveLocally()
     }
 
