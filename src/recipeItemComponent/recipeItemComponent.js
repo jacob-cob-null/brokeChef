@@ -1,18 +1,21 @@
+import { recipeModel } from "../models/recipeModel"
+const recipeHandler = recipeModel()
+
 export default function recipeItemComponent(recipeObj) {
-  const id = recipeObj["id"] || crypto.randomUUID()
-  const title = recipeObj["title"]
-  const prepTime = recipeObj["prepTime"]
-  const servings = recipeObj["servings"]
-  const isFavorite = recipeObj["isFavorite"]
-  const imageUrl = recipeObj["imageUrl"]
-  const source = recipeObj["source"]
-  const description = recipeObj["description"] || "No description provided."
+  const id = recipeObj.id || crypto.randomUUID()
+  const title = recipeObj.title
+  const prepTime = recipeObj.prepTime
+  const servings = recipeObj.servings
+  const isFavorite = recipeObj.isFavorite
+  const imageUrl = recipeObj.imageUrl
+  const source = recipeObj.source
+  const description = recipeObj.description || "No description provided."
 
   const icon = isFavorite ? "★" : "☆"
 
-  const component = document.createElement('div')
+  const component = document.createElement("div")
   component.className =
-    'grid h-fit max-h-[210px] w-full grid-cols-3 gap-4 rounded-2xl bg-white p-4 drop-shadow-lg outline outline-1 outline-slate-100'
+    "grid h-fit max-h-[210px] w-full grid-cols-3 gap-4 rounded-2xl bg-white p-4 drop-shadow-lg outline outline-1 outline-slate-100"
   component.id = id
 
   component.innerHTML = `
@@ -29,7 +32,7 @@ export default function recipeItemComponent(recipeObj) {
         <a href="${source}" target="_blank">
           <h1 class="text-xl font-semibold text-slate-800">${title}</h1>
         </a>
-        <h1 class="text-3xl text-slate-500 mb-2">${icon}</h1>
+        <h1 class="toggle-favorite text-3xl text-slate-500 mb-2 cursor-pointer">${icon}</h1>
       </div>
 
       <p class="text-slate-600 text-base font-body">
@@ -38,8 +41,7 @@ export default function recipeItemComponent(recipeObj) {
 
       <div class="grid h-[40px] w-full grid-cols-2 gap-2">
         <div class="flex h-full items-center justify-center rounded-lg bg-orange-200 text-orange-800">
-          Time:
-          <br> ${prepTime} Minutes
+          Time: ${prepTime} Minutes
         </div>
         <div class="flex h-full items-center justify-center rounded-lg bg-amber-200 text-amber-800">
           Servings: ${servings}
@@ -47,6 +49,21 @@ export default function recipeItemComponent(recipeObj) {
       </div>
     </div>
   `
+  // TODO: show modal here
+  component.addEventListener("click", () => {
+
+  })
+
+  //toggle handler
+  const toggle = component.querySelector(".toggle-favorite")
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation()
+    recipeHandler.addFavorite(id)
+
+    // update star instantly
+    const updated = recipeHandler.getLocal().find(r => r.id === id)
+    toggle.textContent = updated?.isFavorite ? "★" : "☆"
+  })
 
   return component
 }
