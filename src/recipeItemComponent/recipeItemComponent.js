@@ -1,4 +1,5 @@
 import { recipeModel } from "../models/recipeModel"
+import { showModal } from "../utility/modal"
 const recipeHandler = recipeModel()
 
 export default function recipeItemComponent(recipeObj) {
@@ -20,18 +21,20 @@ export default function recipeItemComponent(recipeObj) {
 
   component.innerHTML = `
     <div class="relative w-full h-full rounded-xl overflow-hidden">
+    <a href="${source}" target="_blank">
       <img
         src="${imageUrl}"
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-cover shadow-inner"
         alt="${title}"
       />
+      </a>
     </div>
 
     <div class="col-span-2 flex flex-col justify-start gap-2">
       <div class="flex justify-between items-center">
-        <a href="${source}" target="_blank">
+
           <h1 class="text-xl font-semibold text-slate-800">${title}</h1>
-        </a>
+
         <h1 class="toggle-favorite text-3xl text-slate-500 mb-2 cursor-pointer">${icon}</h1>
       </div>
 
@@ -40,18 +43,18 @@ export default function recipeItemComponent(recipeObj) {
       </p>
 
       <div class="grid h-[40px] w-full grid-cols-2 gap-2">
-        <div class="flex h-full items-center justify-center rounded-lg bg-orange-200 text-orange-800">
-          Time: ${prepTime} Minutes
+        <div class="flex h-full items-center justify-around py-2 rounded-lg bg-orange-200 text-orange-800">
+          <span class="material-icons-outlined">timer</span>${prepTime} Mins
         </div>
-        <div class="flex h-full items-center justify-center rounded-lg bg-amber-200 text-amber-800">
-          Servings: ${servings}
+        <div class="flex h-full items-center justify-around rounded-lg bg-amber-200 text-amber-800">
+           Servings: ${servings}
         </div>
       </div>
     </div>
   `
   // TODO: show modal here
   component.addEventListener("click", () => {
-
+    showModal(recipeObj)
   })
 
   //toggle handler
