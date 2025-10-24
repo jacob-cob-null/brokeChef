@@ -1,72 +1,81 @@
-import { recipeModel } from "../models/recipeModel"
-import { showModal } from "../utility/modal"
-const recipeHandler = recipeModel()
+import { recipeModel } from "../models/recipeModel";
+import { showModal } from "../utility/modal";
+const recipeHandler = recipeModel();
 
 export default function recipeItemComponent(recipeObj) {
-  const id = recipeObj.id || crypto.randomUUID()
-  const title = recipeObj.title
-  const prepTime = recipeObj.prepTime
-  const servings = recipeObj.servings
-  const isFavorite = recipeObj.isFavorite
-  const imageUrl = recipeObj.imageUrl
-  const source = recipeObj.source
-  const description = recipeObj.description || "No description provided."
+  const id = recipeObj.id || crypto.randomUUID();
+  const title = recipeObj.title;
+  const prepTime = recipeObj.prepTime;
+  const servings = recipeObj.servings;
+  const isFavorite = recipeObj.isFavorite;
+  const imageUrl = recipeObj.imageUrl;
+  const source = recipeObj.source;
+  const description = recipeObj.description || "No description provided.";
 
-  const icon = isFavorite ? "★" : "☆"
+  const icon = isFavorite ? "★" : "☆";
 
-  const component = document.createElement("div")
-  component.className =
-    "grid h-fit max-h-[210px] w-full grid-cols-3 gap-4 rounded-2xl bg-white p-4 drop-shadow-lg outline outline-1 outline-slate-100"
-  component.id = id
+  const component = document.createElement("div");
+  component.className = `
+    grid h-[200px] w-full grid-cols-3 gap-3 
+    rounded-2xl bg-white p-3 shadow-md 
+    outline outline-1 outline-slate-100 
+    overflow-hidden hover:shadow-lg transition-all
+  `;
+  component.id = id;
 
   component.innerHTML = `
-    <div class="relative w-full h-full rounded-xl overflow-hidden">
-    <a href="${source}" target="_blank">
-      <img
-        src="${imageUrl}"
-        class="absolute inset-0 w-full h-full object-cover shadow-inner"
-        alt="${title}"
-      />
+    <!-- Left: Image -->
+    <div class="relative h-full w-full rounded-xl overflow-hidden">
+      <a href="${source}" target="_blank" class="block h-full w-full">
+        <img
+          src="${imageUrl}"
+          alt="${title}"
+          class="h-full w-full object-cover"
+        />
       </a>
     </div>
 
-    <div class="col-span-2 flex flex-col justify-start gap-2">
-      <div class="flex justify-between items-center">
-
-          <h1 class="text-xl font-semibold text-slate-800">${title}</h1>
-
-        <h1 class="toggle-favorite text-3xl text-slate-500 mb-2 cursor-pointer">${icon}</h1>
+    <!-- Right: Content -->
+    <div class="col-span-2 flex flex-col justify-between h-full">
+      
+      <!-- Title + Favorite -->
+      <div class="flex items-start justify-between">
+        <h1 class="text-lg font-semibold text-slate-800 truncate pr-2">${title}</h1>
+        <span class="toggle-favorite text-2xl text-slate-400 cursor-pointer select-none">${icon}</span>
       </div>
 
-      <p class="text-slate-600 text-base font-body">
+      <!-- Description -->
+      <p class="text-slate-600 text-sm line-clamp-3 overflow-hidden">
         ${description}
       </p>
 
-      <div class="grid h-[40px] w-full grid-cols-2 gap-2">
-        <div class="flex h-full items-center justify-around py-2 rounded-lg bg-orange-200 text-orange-800">
-          <span class="material-icons-outlined">timer</span>${prepTime} Mins
+      <!-- Info Footer -->
+      <div class="grid grid-cols-2 gap-2 text-xs font-medium">
+        <div class="flex items-center justify-center gap-1 rounded-lg bg-orange-100 text-orange-800 py-1">
+          <span class="material-icons-outlined text-base">timer</span>
+          ${prepTime}m
         </div>
-        <div class="flex h-full items-center justify-around rounded-lg bg-amber-200 text-amber-800">
-           Servings: ${servings}
+        <div class="flex items-center justify-center rounded-lg bg-amber-100 text-amber-800 py-1">
+          Serves: ${servings}
         </div>
       </div>
     </div>
-  `
-  // TODO: show modal here
+  `;
+
+  // modal click
   component.addEventListener("click", () => {
-    showModal(recipeObj)
-  })
+    showModal(recipeObj);
+  });
 
-  //toggle handler
-  const toggle = component.querySelector(".toggle-favorite")
+  // toggle favorite
+  const toggle = component.querySelector(".toggle-favorite");
   toggle.addEventListener("click", (e) => {
-    e.stopPropagation()
-    recipeHandler.addFavorite(id)
+    e.stopPropagation();
+    recipeHandler.addFavorite(id);
 
-    // update star instantly
-    const updated = recipeHandler.getLocal().find(r => r.id === id)
-    toggle.textContent = updated?.isFavorite ? "★" : "☆"
-  })
+    const updated = recipeHandler.getLocal().find((r) => r.id === id);
+    toggle.textContent = updated?.isFavorite ? "★" : "☆";
+  });
 
-  return component
+  return component;
 }
