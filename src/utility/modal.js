@@ -1,20 +1,27 @@
+import { recipeModel } from "../models/recipeModel";
+import favoritesView from "../views/favorites/favoritesMenuView";
+import recipesView from "../views/recipes/recipesMenuView";
+
+
+const recipeHandler = recipeModel()
+
 export function showModal(recipeObj) {
-    const id = recipeObj.id || crypto.randomUUID();
-    const title = recipeObj.title;
-    const prepTime = recipeObj.prepTime;
-    const servings = recipeObj.servings;
-    const isFavorite = recipeObj.isFavorite;
-    const imageUrl = recipeObj.imageUrl;
-    const source = recipeObj.source;
-    const ingredients = recipeObj.ingredients || ["No ingredients provided"];
-    const description = recipeObj.description || "No description provided.";
-    const icon = isFavorite ? "★" : "☆";
+  const id = recipeObj.id || crypto.randomUUID();
+  const title = recipeObj.title;
+  const prepTime = recipeObj.prepTime;
+  const servings = recipeObj.servings;
+  const isFavorite = recipeObj.isFavorite;
+  const imageUrl = recipeObj.imageUrl;
+  const source = recipeObj.source;
+  const ingredients = recipeObj.ingredients || ["No ingredients provided"];
+  const description = recipeObj.description || "No description provided.";
+  const icon = isFavorite ? "★" : "☆";
 
-    const page = document.createElement("div");
-    page.className =
-        "fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4";
+  const page = document.createElement("div");
+  page.className =
+    "fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4";
 
-    page.innerHTML = `
+  page.innerHTML = `
     <div class="flex h-[600px] w-[340px] flex-col items-center justify-start gap-3 rounded-2xl bg-white p-4 shadow-xl overflow-y-auto">
       
       <!-- Header -->
@@ -49,29 +56,49 @@ export function showModal(recipeObj) {
         <h2 class="text-lg font-semibold mb-1">Ingredients</h2>
         <ul class="ing-list flex flex-col gap-1 text-sm text-slate-700"></ul>
       </div>
-
-      <!-- Source -->
-      ${source
-            ? `<a href="${source}" target="_blank" class="mt-3 text-blue-600 underline text-sm">View Source ↗</a>`
-            : ""
-        }
-
+      <div class="w-full flex justify-around items-center gap-4">
+        <a href="${source}" target="_blank" class="w-full">
+        <button class="w-full h-[40px] bg-blue-300 rounded-xl">Source</button>
+        </a>
+        <button id="del_btn" class="w-full h-[40px] bg-red-300 rounded-xl">Delete Recipe</button>
+      </div>
     </div>
   `;
 
-    // append ingredients
-    const list = page.querySelector(".ing-list");
-    ingredients.forEach((ing) => {
-        const li = document.createElement("li");
-        li.textContent = "• " + ing;
-        list.appendChild(li);
-    });
+  //append ingredients
+  const list = page.querySelector(".ing-list");
+  ingredients.forEach((ing) => {
+    const li = document.createElement("li");
+    li.textContent = "• " + ing;
+    list.appendChild(li);
+  });
 
-    // close modal
-    page.querySelector("#closeModal").addEventListener("click", () => {
-        page.remove();
-    });
+  //close modal
+  page.querySelector("#closeModal").addEventListener("click", () => {
+    page.remove();
+  });
 
-    // append to body
-    document.body.appendChild(page);
+  //delete recipe
+  const del_btn = page.querySelector("#del_btn")
+  del_btn.addEventListener('click', () => {
+    page.remove();
+    recipeHandler.deleteRecipe(id)
+
+    const bodyContainer = document.getElementById('body')
+    if (bodyContainer) {
+      bodyContainer.innerHTML = ''
+      bodyContainer.appendChild(recipesView())
+      return
+    }
+    const app = document.getElementById('app')
+    if (app) {
+      app.innerHTML = ''
+      app.appendChild(recipesView())
+      return
+    }
+    location.reload()
+  })
+
+  // append to body
+  document.body.appendChild(page);
 }
