@@ -1,6 +1,7 @@
 import { searchInput } from "./components/searchInput"
 import { resultContainer } from "./components/resultContainer"
 import { warning } from "../../utility/alerts"
+import { renderSearched } from "../../recipeItemComponent/renderSearched"
 
 export function searchMenuView() {
     const page = document.createElement('div')
@@ -25,12 +26,14 @@ function searchEvent(root) {
 
     searchBtn.addEventListener('click', () => {
         const value = input.value.trim()
+        //container 
+        const searchCont = document.getElementById('searchRes')
 
         //alert empty field
         if (!value) {
             warning("Recipes input field cannot be empty!")
             return
         }
-        alert(value)
+        renderSearched(searchCont, value)
     })
 }
