@@ -1,5 +1,5 @@
 export function ingredientModel() {
-    const ingredients = []
+    let ingredients = []
 
     function addIngredient(value) {
         ingredients.push(value)
